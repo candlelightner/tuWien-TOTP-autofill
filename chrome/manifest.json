@@ -3,7 +3,7 @@
   "name": "TOTP Autofill",
   "version": "1.0",
   "description": "Erzeugt einen TOTP und füllt ihn auf dem TU Wien Login automatisch ein.",
-  "permissions": ["storage", "scripting", "activeTab"],
+  "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://idp.zid.tuwien.ac.at/*"],
   "content_scripts": [
     {
