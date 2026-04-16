@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "TOTP Autofill",
+  "version": "1.0",
+  "description": "Erzeugt einen TOTP und füllt ihn auf einer bestimmten Seite automatisch ein.",
+  "permissions": [
+    "storage",
+    "https://idp.zid.tuwien.ac.at/*"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://idp.zid.tuwien.ac.at/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
