@@ -1,0 +1,75 @@
+:root {
+  color-scheme: light dark;
+  --accent: #006699;
+  --danger: #b00020;
+  --border: color-mix(in srgb, currentColor 20%, transparent);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 { font-size: 1.4rem; margin: 0 0 12px; }
+h2 { font-size: 1.05rem; margin: 0 0 8px; }
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.card.warn { border-color: #d98e04; }
+.card.note ul { margin: 0; padding-left: 18px; }
+.card.note li { margin-bottom: 4px; }
+
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+label.radio { display: flex; gap: 8px; font-weight: normal; margin: 8px 0; }
+
+input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font: inherit;
+  font-family: ui-monospace, monospace;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+button.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+
+.hint { font-size: 0.85rem; opacity: 0.75; }
+.state { font-weight: 600; }
+.state.ok { color: #2e7d32; }
+
+#status { min-height: 1.2em; font-weight: 600; }
+#status.error { color: var(--danger); }
+
+.preview { display: flex; align-items: baseline; gap: 12px; margin: 8px 0; }
+.code { font-family: ui-monospace, monospace; font-size: 1.8rem; letter-spacing: 0.15em; }
+
+kbd {
+  font-family: ui-monospace, monospace;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 4px;
+}

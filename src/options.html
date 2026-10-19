@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TOTP Autofill TU Wien – Einstellungen</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <h1>TOTP Autofill TU Wien</h1>
+
+    <section id="permission-warning" class="card warn" hidden>
+      <p>Die Erweiterung hat noch keinen Zugriff auf <code>idp.zid.tuwien.ac.at</code>.</p>
+      <button id="grant" type="button">Zugriff erlauben</button>
+      <p class="hint" id="grant-hint" hidden>
+        Falls kein Dialog erscheint: Zugriff in den Erweiterungs-Einstellungen des Browsers erlauben
+        (Safari: Einstellungen → Erweiterungen bzw. „aA“-Menü auf iOS).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Secret</h2>
+      <p id="secret-state" class="state"></p>
+
+      <form id="secret-form" autocomplete="off">
+        <label for="secret">otpauth-URL oder Base32-Secret</label>
+        <input id="secret" type="password" autocomplete="off" autocapitalize="off"
+               spellcheck="false" placeholder="otpauth://totp/…">
+        <p class="hint">
+          Gespeichert werden nur Secret, Stellen, Periode und Algorithmus –
+          nicht Issuer oder Benutzername. Das Feld wird nach dem Speichern geleert.
+        </p>
+        <div class="row">
+          <button id="save" type="submit">Speichern</button>
+          <button id="delete" type="button" class="danger" hidden>Secret löschen</button>
+        </div>
+      </form>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="preview-card" class="card" hidden>
+      <h2>Kontrolle</h2>
+      <p class="hint">Vergleiche den Code mit deiner Authenticator-App.</p>
+      <div class="preview" hidden id="preview">
+        <span id="code" class="code"></span>
+        <span id="countdown" class="hint"></span>
+      </div>
+      <button id="toggle-preview" type="button">Aktuellen Code anzeigen</button>
+    </section>
+
+    <section class="card">
+      <h2>Modus</h2>
+      <label class="radio">
+        <input type="radio" name="mode" value="auto">
+        <span><strong>Automatisch</strong> – Code wird eingefüllt, sobald das TOTP-Feld erscheint.</span>
+      </label>
+      <label class="radio">
+        <input type="radio" name="mode" value="manual">
+        <span><strong>Manuell</strong> – Code wird nur nach dem Tastenkürzel
+          <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> eingefüllt
+          (nicht auf iOS verfügbar).</span>
+      </label>
+    </section>
+
+    <section class="card note">
+      <h2>Hinweise</h2>
+      <ul>
+        <li>Das Secret liegt unverschlüsselt im Browserprofil. Wer Zugriff auf dein Profil hat, kann damit dauerhaft Codes erzeugen.</li>
+        <li>Diese Erweiterung macht aus 2FA faktisch einen Faktor auf diesem Gerät.</li>
+        <li>Bei Verdacht auf Diebstahl: TOTP im TU-Portal neu einrichten.</li>
+        <li>Automatische Updates für diese Erweiterung zu deaktivieren verhindert, dass ein künftiges Update unbemerkt Code ändert.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="totp.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

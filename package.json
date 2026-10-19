@@ -1,0 +1,19 @@
+{
+  "name": "tuwien-totp-autofill",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Browser extension that fills the TU Wien IdP TOTP field (Firefox, Chrome, Safari macOS/iOS).",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "package": "node scripts/build.mjs --zip",
+    "test": "node --test test/*.test.mjs",
+    "lint": "node scripts/build.mjs firefox && web-ext lint --source-dir dist/firefox --self-hosted",
+    "safari": "node scripts/build.mjs safari && sh scripts/build-safari.sh"
+  },
+  "devDependencies": {
+    "web-ext": "^10.8.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
